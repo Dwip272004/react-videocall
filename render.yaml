@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: my-app
+    env: node
+    plan: free  # Change to 'starter' or other plans if needed
+    buildCommand: yarn build  # Use 'npm run build' if you're using npm
+    startCommand: yarn start  # Use 'npm start' if you're using npm
+    envVars:
+      - key: NODE_ENV
+        value: production
+    autoDeploy: true
+    branch: main  # Specify the branch to auto-deploy from
+    region: oregon  # Change the region if necessary
+
+  # Example of a background worker service
+  - type: worker
+    name: my-worker
+    env: node
+    plan: free
+    buildCommand: yarn build
+    startCommand: yarn run worker  # Change based on your worker command
+    autoDeploy: true
+    branch: main
+    region: oregon
